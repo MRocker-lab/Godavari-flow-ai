@@ -12,10 +12,25 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom', 'zustand'],
-          'vendor-maps': ['leaflet', 'react-leaflet'],
-          'vendor-icons': ['lucide-react'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('leaflet')) return 'vendor-maps';
+            if (id.includes('lucide-react')) return 'vendor-icons';
+            if (
+              id.includes('react') ||
+              id.includes('zustand') ||
+              id.includes('scheduler')
+            ) {
+              return 'vendor-react';
+            }
+          }
+          if (id.includes('/src/pages/command/') || id.includes('\\src\\pages\\command\\')) {
+            return 'portal-command';
+          }
+          if (id.includes('/src/pages/pilgrim/') || id.includes('\\src\\pages\\pilgrim\\')) {
+            return 'portal-pilgrim';
+          }
+          return undefined;
         },
       },
     },

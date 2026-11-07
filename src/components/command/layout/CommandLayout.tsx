@@ -523,12 +523,37 @@ export const CommandLayout: React.FC = () => {
         </div>
       )}
 
+      {/* Mobile / Tablet Horizontal Module Navigation Bar (< md) */}
+      <nav
+        aria-label="Mobile Command Modules"
+        data-testid="command-mobile-module-bar"
+        className="flex md:hidden items-center gap-1.5 overflow-x-auto border-b border-slate-800 bg-[#0F172A] px-3 py-2"
+      >
+        {navLinks.map((item) => (
+          <NavLink
+            key={item.to}
+            to={item.to}
+            end={item.exact}
+            className={({ isActive }) =>
+              `inline-flex items-center gap-1.5 shrink-0 rounded-lg px-2.5 py-1.5 text-xs font-bold ${
+                isActive
+                  ? 'bg-cyan-500 text-slate-950'
+                  : 'bg-slate-900 text-slate-300 border border-slate-800'
+              }`
+            }
+          >
+            {item.icon}
+            <span>{item.label[language]}</span>
+          </NavLink>
+        ))}
+      </nav>
+
       {/* Main 3-Column Operational Body: Left Sidebar (Part 1) + Central Workspace (Part 7) + Right Inspection Panel (Part 8) */}
       <div className="flex-1 flex overflow-hidden">
         {/* PART 1: Collapsible Left Navigation Sidebar */}
         <aside
           data-testid="command-left-sidebar"
-          className={`bg-[#0F172A] border-r border-slate-800 flex flex-col justify-between transition-all duration-150 shrink-0 ${
+          className={`bg-[#0F172A] border-r border-slate-800 hidden md:flex flex-col justify-between transition-all duration-150 shrink-0 ${
             sidebarCollapsed ? 'w-16' : 'w-64'
           }`}
         >
@@ -994,3 +1019,4 @@ export const CommandLayout: React.FC = () => {
     </div>
   );
 };
+

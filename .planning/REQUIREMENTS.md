@@ -35,7 +35,7 @@
 
 - [x] **A11Y-01**: **Full Trilingual Support (English, Telugu, Hindi)** — Prominent language selector switching all UI navigation, labels, status indicators, ghat descriptions, Journey Planner outputs, and AI Concierge interactions between **English**, **Telugu (`తెలుగు`)**, and **Hindi (`हिन्दी`)** using `Noto Sans Telugu` and `Noto Sans Devanagari` without layout overflow.
 - [x] **A11Y-02**: **Senior Citizen Mode & Accessibility Controls** — One-click Senior Citizen Mode (enlarged typography, high contrast, simplified prominence, accessibility-first route defaults), keyboard navigation, ARIA screen-reader labels, `>=44px` touch targets, non-color-only status indicators (text + icon + status badge), and `prefers-reduced-motion` compliance.
-- [ ] **A11Y-03**: **Responsive Breakpoint Optimization** — Verified layouts across `360px`, `390px`, `768px`, `1024px`, `1440px`, and `1920px` widths with zero horizontal overflow on mobile.
+- [x] **A11Y-03**: **Responsive Breakpoint Optimization** — Verified layouts across `360px`, `390px`, `768px`, `1024px`, `1440px`, and `1920px` widths with zero horizontal overflow on mobile.
 
 ---
 
@@ -73,7 +73,7 @@
 ### Category F: Quality Assurance & Security Guardrails (`QA`)
 
 - [x] **QA-01**: **Zero Client Secret Exposure** — Private API keys (such as Gemini API keys) must never be embedded in frontend code or `VITE_*` variables. Any optional external LLM integration must target a server-side proxy endpoint contract (`/api/ai/*`) while the Local Domain AI Engine operates 100% independently.
-- [ ] **QA-02**: **12-Point Master UX Verification & Automated Test Suite** — Pass all 12 UX Quality Assurance checks from `UI-UX-SPEC.md` Section 7 plus automated Vitest unit/integration tests for routing, simulation math, and cross-tab sync.
+- [x] **QA-02**: **12-Point Master UX Verification & Automated Test Suite** — Pass all 12 UX Quality Assurance checks from `UI-UX-SPEC.md` Section 7 plus automated Vitest unit/integration tests for routing, simulation math, and cross-tab sync.
 
 ---
 
@@ -97,5 +97,5 @@
 | `MAP-01`, `MAP-02`, `MAP-03` | **Phase 2:** Dual-Theme Map Engine & Offline SVG Riverfront Canvas | Completed |
 | `PIL-01` to `PIL-08` | **Phase 3:** Pilgrim Portal — Mobile-First Travel & Mobility Experience | Completed |
 | `CMD-01` to `CMD-08` | **Phase 4:** Authority Command Centre & Digital Twin Simulator | Completed |
-| `A11Y-03`, `QA-02` | **Phase 5:** Cross-Portal Integration, Responsive Polish & 12-Point UX Audit | Pending |
+| `A11Y-03`, `QA-02` | **Phase 5:** Cross-Portal Integration, Responsive Polish & 12-Point UX Audit | Completed |
 

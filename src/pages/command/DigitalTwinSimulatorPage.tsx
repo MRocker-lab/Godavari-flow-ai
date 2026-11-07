@@ -694,3 +694,4 @@ export const DigitalTwinSimulatorPage: React.FC = () => {
     </div>
   );
 };
+

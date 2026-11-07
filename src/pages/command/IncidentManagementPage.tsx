@@ -543,3 +543,4 @@ export const IncidentManagementPage: React.FC = () => {
     </div>
   );
 };
+
