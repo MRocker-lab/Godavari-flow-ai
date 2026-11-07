@@ -9,6 +9,7 @@ import {
   Sliders,
 } from 'lucide-react';
 import {
+  DataProvenance,
   DataProvenanceSource,
   OperationalLevel,
   ParkingOperationalStatus,
@@ -16,6 +17,58 @@ import {
   ShuttleOperationalStatus,
 } from '@/types';
 import { useTranslation } from '@/i18n/useTranslation';
+
+export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
+  variant?:
+    | 'low'
+    | 'moderate'
+    | 'high'
+    | 'critical'
+    | 'success'
+    | 'warning'
+    | 'danger'
+    | 'info'
+    | 'neutral';
+  pulse?: boolean;
+}
+
+export const Badge: React.FC<BadgeProps> = ({
+  variant = 'neutral',
+  pulse = false,
+  className = '',
+  children,
+  ...props
+}) => {
+  const variantClasses: Record<NonNullable<BadgeProps['variant']>, string> = {
+    low: 'bg-emerald-50 text-emerald-900 border-emerald-300',
+    success: 'bg-emerald-50 text-emerald-900 border-emerald-300',
+    moderate: 'bg-amber-50 text-amber-900 border-amber-300',
+    warning: 'bg-amber-50 text-amber-900 border-amber-300',
+    high: 'bg-orange-50 text-orange-950 border-orange-300',
+    critical: 'bg-red-50 text-red-900 border-red-300',
+    danger: 'bg-red-50 text-red-900 border-red-300',
+    info: 'bg-blue-50 text-[#1E3A8A] border-blue-200',
+    neutral: 'bg-slate-100 text-slate-700 border-slate-300',
+  };
+
+  return (
+    <span
+      className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-bold ${
+        variantClasses[variant]
+      } ${pulse ? 'animate-pulse' : ''} ${className}`}
+      {...props}
+    >
+      {children}
+    </span>
+  );
+};
+
+export const ProvenanceBadge: React.FC<{
+  provenance: DataProvenance;
+  portal?: 'pilgrim' | 'command';
+}> = ({ provenance, portal = 'pilgrim' }) => (
+  <SimulationBadge source={provenance.source} portal={portal} compact />
+);
 
 export interface StatusIndicatorProps {
   level:

@@ -19,14 +19,19 @@ import { useMobilityStore } from '@/store/useMobilityStore';
 import { useTranslation } from '@/i18n/useTranslation';
 
 export const MobilityMapWorkspace: React.FC<MobilityMapWorkspaceProps> = ({
-  portal,
+  portal: portalProp,
+  portalMode,
+  initialEngine = 'OFFLINE_SVG',
   initialLayers,
   initialSelectedFeature = null,
   highlightedJourneyOption = null,
-  enableOperatorControls = portal === 'command',
+  enableOperatorControls,
   onSelectGhatForJourney,
   compactHeight = false,
 }) => {
+  const portal = portalProp || portalMode || 'pilgrim';
+  const effectiveOperatorControls =
+    enableOperatorControls !== undefined ? enableOperatorControls : portal === 'command';
   const state = useMobilityStore((s) => s.state);
   const { t, language } = useTranslation();
 
@@ -39,7 +44,7 @@ export const MobilityMapWorkspace: React.FC<MobilityMapWorkspaceProps> = ({
   });
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [engineMode, setEngineMode] = useState<MapEngineMode>('OFFLINE_SVG');
+  const [engineMode, setEngineMode] = useState<MapEngineMode>(initialEngine);
   const [displayView, setDisplayView] = useState<MapDisplayView>('MAP_VIEW');
   const [selectedFeature, setSelectedFeature] =
     useState<SelectedMapFeature | null>(initialSelectedFeature);
@@ -165,13 +170,14 @@ export const MobilityMapWorkspace: React.FC<MobilityMapWorkspaceProps> = ({
       {tileFallbackNotice && (
         <div
           role="status"
+          data-testid="tile-fallback-banner"
           className="px-4 py-2 rounded-xl border border-amber-500/40 bg-amber-500/10 text-xs font-medium"
         >
           {language === 'te'
-            ? 'ఇంటర్నెట్ మ్యాప్ టైల్స్ అందుబాటులో లేవు — ఆఫ్‌లైన్ ఇంటరాక్టివ్ గోదావరి రివర్‌ఫ్రంట్ వెక్టర్ మ్యాప్‌కు మార్చబడింది.'
+            ? 'ఇంటర్నెట్ మ్యాప్ టైల్స్ అందుబాటులో లేవు — ఆఫ్‌లైన్ ఇంటరాక్టివ్ గోదావరి రివర్‌ఫ్రంట్ స్కీమాటిక్ మ్యాప్‌కు మార్చబడింది.'
             : language === 'hi'
-            ? 'इंटरनेट मैप टाइल्स अनुपलब्ध — ऑफ़लाइन इंटरैक्टिव गोदावरी रिवरफ्रंट वेक्टर मैप सक्रिय किया गया।'
-            : 'Map tile network unreachable — automatically switched to the Offline Interactive SVG Riverfront Map.'}
+            ? 'इंटरनेट मैप टाइल्स अनुपलब्ध — ऑफ़लाइन इंटरैक्टिव गोदावरी रिवरफ्रंट योजनाबद्ध मानचित्र सक्रिय किया गया।'
+            : 'Map tile network unreachable — automatically switched to the Offline Interactive SVG Riverfront Schematic Map.'}
         </div>
       )}
 
@@ -347,10 +353,11 @@ export const MobilityMapWorkspace: React.FC<MobilityMapWorkspaceProps> = ({
             onClose={() => setSelectedFeature(null)}
             onSelectFeature={setSelectedFeature}
             onSelectGhatForJourney={onSelectGhatForJourney}
-            enableOperatorControls={enableOperatorControls}
+            enableOperatorControls={effectiveOperatorControls}
           />
         </div>
       </div>
     </div>
   );
 };
+

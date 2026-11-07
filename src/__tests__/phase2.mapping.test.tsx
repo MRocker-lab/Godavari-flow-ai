@@ -153,4 +153,61 @@ describe('Phase 2 Verification Suite: Unified Mapping Engine & Offline Interacti
       'Kovvur Gospada Kshetram Ghat'
     );
   });
+
+  it('6. Simulates Leaflet network/tile failure, verifies automatic fallback to Offline SVG Schematic Map, and confirms all 7 layers + state updates work offline', () => {
+    render(<MobilityMapWorkspace portal="command" enableOperatorControls={true} />);
+
+    // Verify Schematic Map disclosure is clearly labeled
+    expect(screen.getByTestId('schematic-map-disclosure')).toHaveTextContent(
+      'Godavari Riverfront Schematic Map (Offline-Ready — Not Survey-Grade Cartography)'
+    );
+
+    // Switch to Online Leaflet mode
+    fireEvent.click(screen.getByTestId('engine-online-leaflet'));
+    const leafletMap = screen.getByTestId('online-leaflet-map');
+    expect(leafletMap).toBeInTheDocument();
+
+    // Simulate an actual tile image load failure on a Leaflet tile element OR network offline event
+    const tileImg = leafletMap.querySelector('img.leaflet-tile');
+    if (tileImg) {
+      fireEvent.error(tileImg);
+    } else {
+      fireEvent(window, new Event('offline'));
+    }
+
+    // Verify automatic fallback banner and Offline SVG Riverfront Schematic Map appear
+    expect(screen.getByTestId('tile-fallback-banner')).toHaveTextContent(
+      'Map tile network unreachable — automatically switched to the Offline Interactive SVG Riverfront Schematic Map.'
+    );
+    expect(screen.getByTestId('offline-svg-riverfront-map')).toBeInTheDocument();
+
+    // Verify all 7 operational layers remain functional in offline fallback mode
+    const layerIds = [
+      'traffic',
+      'parking',
+      'shuttles',
+      'crowdHeatmap',
+      'incidents',
+      'emergencyRoutes',
+      'roadClosures',
+    ] as const;
+
+    for (const id of layerIds) {
+      expect(screen.getByTestId(`svg-layer-${id}`)).toBeInTheDocument();
+      fireEvent.click(screen.getByTestId(`layer-toggle-${id}`));
+      expect(screen.queryByTestId(`svg-layer-${id}`)).not.toBeInTheDocument();
+      fireEvent.click(screen.getByTestId(`layer-toggle-${id}`));
+      expect(screen.getByTestId(`svg-layer-${id}`)).toBeInTheDocument();
+    }
+
+    // Verify map actions continue updating canonical shared state while offline
+    fireEvent.click(screen.getByTestId('map-parking-park-morampudi'));
+    fireEvent.click(screen.getByTestId('detail-parking-full'));
+    expect(
+      useMobilityStore
+        .getState()
+        .state.parkingHubs.find((p) => p.id === 'park-morampudi')?.status
+    ).toBe('FULL');
+  });
 });
+

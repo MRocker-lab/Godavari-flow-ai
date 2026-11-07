@@ -98,8 +98,9 @@ export const InteractiveRiverfrontSvgMap: React.FC<
           : 'bg-[#F4F1EA] border-[#E5DFD5]'
       }`}
     >
-      {/* Top-Left Geographic Orientation Badge */}
+      {/* Top-Left Schematic Map Disclosure Badge */}
       <div
+        data-testid="schematic-map-disclosure"
         className={`absolute top-3 left-3 z-10 px-3 py-1.5 rounded-xl border text-[11px] font-semibold flex items-center gap-2 pointer-events-none ${
           isCommand
             ? 'bg-slate-900/90 border-slate-700 text-slate-200'
@@ -109,10 +110,10 @@ export const InteractiveRiverfrontSvgMap: React.FC<
         <span className="w-2 h-2 rounded-full bg-emerald-500" />
         <span>
           {language === 'te'
-            ? 'గోదావరి నదీ తీర కార్టోగ్రాఫిక్ మ్యాప్ (ఆఫ్‌లైన్ సిద్ధం)'
+            ? 'గోదావరి నదీ తీర స్కీమాటిక్ మ్యాప్ (ఆఫ్‌లైన్ సిద్ధం — సర్వే మ్యాప్ కాదు)'
             : language === 'hi'
-            ? 'गोदावरी रिवरफ्रंट मानचित्र (ऑफ़लाइन सक्षम)'
-            : 'Godavari Riverfront Corridor Map • Offline-Ready Vector Engine'}
+            ? 'गोदावरी रिवरफ्रंट योजनाबद्ध मानचित्र (ऑफ़लाइन सक्षम — सर्वेक्षण मानचित्र नहीं)'
+            : 'Godavari Riverfront Schematic Map (Offline-Ready — Not Survey-Grade Cartography)'}
         </span>
       </div>
 
@@ -742,3 +743,4 @@ export const InteractiveRiverfrontSvgMap: React.FC<
     </div>
   );
 };
+

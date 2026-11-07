@@ -199,15 +199,15 @@ export const MapLayerControls: React.FC<MapLayerControlsProps> = ({
                     : 'bg-[#0D9488] text-white'
                   : 'opacity-75 hover:opacity-100'
               }`}
-              title="Interactive Vector Riverfront Map (Works 100% Offline)"
+              title="Interactive Schematic Riverfront Map (Works 100% Offline)"
             >
               <Layers className="w-3.5 h-3.5" />
               <span>
                 {language === 'te'
-                  ? 'రివర్‌ఫ్రంట్ వెక్టర్ (ఆఫ్‌లైన్)'
+                  ? 'రివర్‌ఫ్రంట్ స్కీమాటిక్ (ఆఫ్‌లైన్)'
                   : language === 'hi'
-                  ? 'रिवरफ्रंट वेक्टर (ऑफ़लाइन)'
-                  : 'Riverfront Vector (Offline-Ready)'}
+                  ? 'रिवरफ्रंट योजनाबद्ध (ऑफ़लाइन)'
+                  : 'Schematic Map (Offline-Ready)'}
               </span>
             </button>
             <button
@@ -343,3 +343,4 @@ export const MapLayerControls: React.FC<MapLayerControlsProps> = ({
     </div>
   );
 };
+

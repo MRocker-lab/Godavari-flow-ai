@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import {
   AccessibilityBar,
   Button,
@@ -7,6 +8,16 @@ import {
   SimulationBadge,
   StatusIndicator,
 } from '@/components/design-system';
+import { PilgrimLayout } from '@/components/pilgrim/layout/PilgrimLayout';
+import {
+  AITravelAssistantPage,
+  ExploreDestinationsPage,
+  JourneyPlannerPage,
+  ParkingFinderPage,
+  PilgrimHomePage,
+  SafetyAndAccessibilityPage,
+  ShuttleTrackerPage,
+} from '@/pages/pilgrim';
 import { useMobilityStore } from '@/store/useMobilityStore';
 import { useTranslation } from '@/i18n/useTranslation';
 import { defaultAIService } from '@/adapters/ai/LocalDomainAIEngine';
@@ -14,7 +25,8 @@ import { ConciergeMessageResponse } from '@/adapters/interfaces/IAIServiceAdapte
 import { useAccessibilityStore } from '@/store/useAccessibilityStore';
 import { MobilityMapWorkspace } from '@/components/maps';
 
-export const App: React.FC = () => {
+export const CommandSyncHarness: React.FC = () => {
+  const navigate = useNavigate();
   const state = useMobilityStore((s) => s.state);
   const lastSyncChannel = useMobilityStore((s) => s.lastSyncChannel);
   const setRoadStatus = useMobilityStore((s) => s.setRoadStatus);
@@ -25,7 +37,7 @@ export const App: React.FC = () => {
   const { t, ui, language } = useTranslation();
   const seniorMode = useAccessibilityStore((s) => s.seniorCitizenMode);
 
-  const [portalPreview, setPortalPreview] = useState<'pilgrim' | 'command'>('pilgrim');
+  const [portalPreview, setPortalPreview] = useState<'pilgrim' | 'command'>('command');
   const [aiQuery, setAiQuery] = useState(
     'Are any roads or bridges closed in Rajamahendravaram?'
   );
@@ -74,7 +86,7 @@ export const App: React.FC = () => {
               portal={portalPreview}
               variant={portalPreview === 'pilgrim' ? 'primary' : 'secondary'}
               size="sm"
-              onClick={() => setPortalPreview('pilgrim')}
+              onClick={() => navigate('/')}
             >
               {ui('switchToPilgrimPortal')}
             </Button>
@@ -333,6 +345,30 @@ export const App: React.FC = () => {
         />
       </div>
     </div>
+  );
+};
+
+export const App: React.FC = () => {
+  return (
+    <Routes>
+      {/* Pilgrim Portal Routes (Mobile-First Travel & Mobility Experience) */}
+      <Route element={<PilgrimLayout />}>
+        <Route index element={<PilgrimHomePage />} />
+        <Route path="explore" element={<ExploreDestinationsPage />} />
+        <Route path="journey-planner" element={<JourneyPlannerPage />} />
+        <Route path="parking" element={<ParkingFinderPage />} />
+        <Route path="shuttles" element={<ShuttleTrackerPage />} />
+        <Route path="assistant" element={<AITravelAssistantPage />} />
+        <Route path="safety" element={<SafetyAndAccessibilityPage />} />
+      </Route>
+
+      {/* Command Centre & Cross-Tab Sync Harness (Expanded in Phase 4) */}
+      <Route path="/command/*" element={<CommandSyncHarness />} />
+      <Route path="/sync-harness" element={<CommandSyncHarness />} />
+
+      {/* Fallback Redirect */}
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 };
 

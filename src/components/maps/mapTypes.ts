@@ -22,13 +22,16 @@ export type MapEngineMode = 'OFFLINE_SVG' | 'ONLINE_LEAFLET';
 export type MapDisplayView = 'MAP_VIEW' | 'SPLIT_VIEW' | 'LIST_VIEW';
 
 export interface MobilityMapWorkspaceProps {
-  portal: 'pilgrim' | 'command';
+  portal?: 'pilgrim' | 'command';
+  portalMode?: 'pilgrim' | 'command';
+  initialEngine?: MapEngineMode;
   initialLayers?: Partial<MapLayerVisibility>;
   initialSelectedFeature?: SelectedMapFeature | null;
   highlightedJourneyOption?: ComputedJourneyOption | null;
   enableOperatorControls?: boolean;
   onSelectGhatForJourney?: (ghatId: string) => void;
   compactHeight?: boolean;
+  heightClass?: string;
 }
 
 export const DEFAULT_PILGRIM_LAYERS: MapLayerVisibility = {
@@ -50,3 +53,4 @@ export const DEFAULT_COMMAND_LAYERS: MapLayerVisibility = {
   emergencyRoutes: true,
   roadClosures: true,
 };
+

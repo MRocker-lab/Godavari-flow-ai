@@ -18,7 +18,10 @@ describe('Phase 1 UI & Two-Window Real-Time Synchronization Verification', () =>
 
   it('renders App, toggles road closure, parking, shuttle, and crowd, and persists to localStorage', () => {
     render(
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <MemoryRouter
+        initialEntries={['/sync-harness']}
+        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+      >
         <App />
       </MemoryRouter>
     );
@@ -47,7 +50,10 @@ describe('Phase 1 UI & Two-Window Real-Time Synchronization Verification', () =>
 
   it('updates UI immediately when an external browser window broadcasts a state update', async () => {
     render(
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <MemoryRouter
+        initialEntries={['/sync-harness']}
+        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+      >
         <App />
       </MemoryRouter>
     );
@@ -87,7 +93,10 @@ describe('Phase 1 UI & Two-Window Real-Time Synchronization Verification', () =>
 
   it('switches languages (English, Telugu, Hindi) and verifies AI Concierge responses in each language', async () => {
     render(
-      <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <MemoryRouter
+        initialEntries={['/sync-harness']}
+        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+      >
         <App />
       </MemoryRouter>
     );

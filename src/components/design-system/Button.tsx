@@ -5,6 +5,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   portal?: 'pilgrim' | 'command';
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'success' | 'saffron';
   size?: 'sm' | 'md' | 'lg';
+  fullWidth?: boolean;
   isLoading?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
@@ -14,6 +15,7 @@ export const Button: React.FC<ButtonProps> = ({
   portal = 'pilgrim',
   variant = 'primary',
   size = 'md',
+  fullWidth = false,
   isLoading = false,
   leftIcon,
   rightIcon,
@@ -70,7 +72,9 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`${baseClasses} ${sizeClasses} ${variantClasses} ${className}`}
+      className={`${baseClasses} ${sizeClasses} ${variantClasses} ${
+        fullWidth ? 'w-full' : ''
+      } ${className}`}
       disabled={disabled || isLoading}
       {...props}
     >

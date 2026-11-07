@@ -2,13 +2,15 @@ import React from 'react';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   portal?: 'pilgrim' | 'command';
+  variant?: 'pilgrim' | 'command';
   elevated?: boolean;
   interactive?: boolean;
   padding?: 'none' | 'sm' | 'md' | 'lg';
 }
 
 export const Card: React.FC<CardProps> = ({
-  portal = 'pilgrim',
+  portal,
+  variant,
   elevated = false,
   interactive = false,
   padding = 'md',
@@ -16,6 +18,7 @@ export const Card: React.FC<CardProps> = ({
   children,
   ...props
 }) => {
+  const resolvedPortal = portal || variant || 'pilgrim';
   const paddingClass = {
     none: 'p-0',
     sm: 'p-4',
@@ -24,7 +27,7 @@ export const Card: React.FC<CardProps> = ({
   }[padding];
 
   const portalStyle =
-    portal === 'command'
+    resolvedPortal === 'command'
       ? elevated
         ? 'bg-[#1E293B] border border-slate-700/80 text-slate-100 shadow-command-panel'
         : 'bg-[#0F172A] border border-slate-800 text-slate-100'
@@ -33,7 +36,7 @@ export const Card: React.FC<CardProps> = ({
       : 'bg-white border border-[#E5DFD5] text-[#0F172A] shadow-pilgrim-card';
 
   const interactiveStyle = interactive
-    ? portal === 'command'
+    ? resolvedPortal === 'command'
       ? 'transition-all duration-150 hover:border-cyan-500/60 hover:bg-slate-800/80 cursor-pointer'
       : 'transition-all duration-150 hover:shadow-pilgrim-hover hover:border-[#1E3A8A]/30 cursor-pointer'
     : '';

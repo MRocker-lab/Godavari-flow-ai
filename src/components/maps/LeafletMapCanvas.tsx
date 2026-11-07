@@ -49,6 +49,18 @@ export const LeafletMapCanvas: React.FC<LeafletMapCanvasProps> = ({
   const { t } = useTranslation();
   const isCommand = portal === 'command';
 
+  React.useEffect(() => {
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+      onTileLoadError();
+      return;
+    }
+    const handleOffline = () => {
+      onTileLoadError();
+    };
+    window.addEventListener('offline', handleOffline);
+    return () => window.removeEventListener('offline', handleOffline);
+  }, [onTileLoadError]);
+
   const tileUrl = isCommand
     ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
     : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
@@ -60,6 +72,11 @@ export const LeafletMapCanvas: React.FC<LeafletMapCanvasProps> = ({
   return (
     <div
       data-testid="online-leaflet-map"
+      onError={(e) => {
+        if ((e.target as HTMLElement)?.classList?.contains('leaflet-tile')) {
+          onTileLoadError();
+        }
+      }}
       className={`relative w-full overflow-hidden rounded-2xl border ${
         compactHeight ? 'h-[430px]' : 'h-[560px]'
       } ${isCommand ? 'border-slate-800 bg-[#070D19]' : 'border-[#E5DFD5] bg-[#FAF8F5]'}`}
@@ -277,3 +294,4 @@ export const LeafletMapCanvas: React.FC<LeafletMapCanvasProps> = ({
     </div>
   );
 };
+

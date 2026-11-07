@@ -41,19 +41,19 @@
 
 ### Category D: Pilgrim Portal — Mobile-First Premium Travel Experience (`PIL`)
 
-- [ ] **PIL-01**: **13-Part Pilgrim Homepage Experience** — Includes: (1) Premium navigation header, (2) GODAVARI FLOW AI branding, (3) Explore/Plan Journey/Parking/Shuttles/AI Assistant navigation, (4) Prominent language selector, (5) Godavari riverfront hero visual, (6) Headline *"Discover Godavari. Experience Pushkaralu Smarter."*, (7) Primary CTAs (*Plan My Journey*, *Explore Destinations*), (8) AI Travel Assistant entry point, (9) Compact mobility status section, (10) Featured destination cards, (11) Smart travel information, (12) Safety & accessibility information, and (13) Well-designed footer.
-- [ ] **PIL-02**: **Responsive Pilgrim Navigation** — Clean top navigation with clear active states on desktop; compact header + touch-friendly bottom navigation bar on mobile.
-- [ ] **PIL-03**: **Explore Destinations Experience** — Curated guide to Rajamahendravaram & Kovvur ghats and temples showing crowd level, wait estimate, accessibility rating, shuttle connectivity, active authority advisories, and one-click *"Plan Journey Here"*.
-- [ ] **PIL-04**: **5-Step Guided Journey Planner** — Interactive stepper:
+- [x] **PIL-01**: **13-Part Pilgrim Homepage Experience** — Includes: (1) Premium navigation header, (2) GODAVARI FLOW AI branding, (3) Explore/Plan Journey/Parking/Shuttles/AI Assistant navigation, (4) Prominent language selector, (5) Godavari riverfront hero visual, (6) Headline *"Discover Godavari. Experience Pushkaralu Smarter."*, (7) Primary CTAs (*Plan My Journey*, *Explore Destinations*), (8) AI Travel Assistant entry point, (9) Compact mobility status section, (10) Featured destination cards, (11) Smart travel information, (12) Safety & accessibility information, and (13) Well-designed footer.
+- [x] **PIL-02**: **Responsive Pilgrim Navigation** — Clean top navigation with clear active states on desktop; compact header + touch-friendly bottom navigation bar on mobile.
+- [x] **PIL-03**: **Explore Destinations Experience** — Curated guide to Rajamahendravaram & Kovvur ghats and temples showing crowd level, wait estimate, accessibility rating, shuttle connectivity, active authority advisories, and one-click *"Plan Journey Here"*.
+- [x] **PIL-04**: **5-Step Guided Journey Planner** — Interactive stepper:
   - Step 1: Select starting location
   - Step 2: Select destination (ghat/temple)
   - Step 3: Select travel mode (Car + Shuttle, Direct Public Transit, Walking/Drop-off, Accessibility Priority)
   - Step 4: Set family/group & accessibility preferences (Senior Citizens, Wheelchair, Young Children, Avoid Crowds, Minimal Walking)
   - Step 5: Side-by-side route comparison cards + interactive route map showing duration, walking distance, traffic condition, crowd level, parking recommendation, shuttle option, and explicit reason for recommendation. Dynamically reflects Command Centre road closures and diversions.
-- [ ] **PIL-05**: **Map-First Parking Experience** — Interactive map + list toggle displaying each parking hub's Name, Available Capacity, Occupancy %, Distance to Destination, Traffic Condition, Walking Distance, Linked Shuttle Route, and Recommendation Badge.
-- [ ] **PIL-06**: **Map-First Shuttle Experience** — Interactive map + list toggle displaying each shuttle corridor's Route Name, Pickup Point, Destination Ghat, Estimated Arrival (ETA), Occupancy Level, Available Capacity, and Wheelchair/Senior Priority status.
-- [ ] **PIL-07**: **AI Travel Assistant (Concierge Interface)** — Conversational travel concierge supporting English, Telugu, and Hindi with suggested questions, natural language input, live state-grounded destination/parking/shuttle recommendations, interactive map-linked response cards, loading states, and conversation history. Powered by the independent Local Domain AI Engine by default (and never exposing private keys on the client).
-- [ ] **PIL-08**: **Safety, Emergency & Accessibility Hub** — Quick access to emergency helplines, medical camp locations, lost-and-found desks, drinking water/sanitation points, and wheelchair/elderly assistance request guidance.
+- [x] **PIL-05**: **Map-First Parking Experience** — Interactive map + list toggle displaying each parking hub's Name, Available Capacity, Occupancy %, Distance to Destination, Traffic Condition, Walking Distance, Linked Shuttle Route, and Recommendation Badge.
+- [x] **PIL-06**: **Map-First Shuttle Experience** — Interactive map + list toggle displaying each shuttle corridor's Route Name, Pickup Point, Destination Ghat, Estimated Arrival (ETA), Occupancy Level, Available Capacity, and Wheelchair/Senior Priority status.
+- [x] **PIL-07**: **AI Travel Assistant (Concierge Interface)** — Conversational travel concierge supporting English, Telugu, and Hindi with suggested questions, natural language input, live state-grounded destination/parking/shuttle recommendations, interactive map-linked response cards, loading states, and conversation history. Powered by the independent Local Domain AI Engine by default (and never exposing private keys on the client).
+- [x] **PIL-08**: **Safety, Emergency & Accessibility Hub** — Quick access to emergency helplines, medical camp locations, lost-and-found desks, drinking water/sanitation points, and wheelchair/elderly assistance request guidance.
 
 ---
 
@@ -93,9 +93,9 @@
 
 | Requirement IDs | Target Phase | Status |
 | :--- | :--- | :--- |
-| `FOUND-01` to `FOUND-08`, `A11Y-01`, `A11Y-02`, `QA-01` | **Phase 1:** Foundation, Dual Design System, Canonical Store & Cross-Tab Sync | Pending |
-| `MAP-01`, `MAP-02`, `MAP-03` | **Phase 2:** Dual-Theme Map Engine & Offline SVG Riverfront Canvas | Pending |
-| `PIL-01` to `PIL-08` | **Phase 3:** Pilgrim Portal — Mobile-First Travel & Mobility Experience | Pending |
+| `FOUND-01` to `FOUND-08`, `A11Y-01`, `A11Y-02`, `QA-01` | **Phase 1:** Foundation, Dual Design System, Canonical Store & Cross-Tab Sync | Completed |
+| `MAP-01`, `MAP-02`, `MAP-03` | **Phase 2:** Dual-Theme Map Engine & Offline SVG Riverfront Canvas | Completed |
+| `PIL-01` to `PIL-08` | **Phase 3:** Pilgrim Portal — Mobile-First Travel & Mobility Experience | Completed |
 | `CMD-01` to `CMD-08` | **Phase 4:** Authority Command Centre & Digital Twin Simulator | Pending |
 | `A11Y-03`, `QA-02` | **Phase 5:** Cross-Portal Integration, Responsive Polish & 12-Point UX Audit | Pending |
 
