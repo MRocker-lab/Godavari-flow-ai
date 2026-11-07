@@ -317,3 +317,4 @@ export const PilgrimLayout: React.FC = () => {
     </div>
   );
 };
+

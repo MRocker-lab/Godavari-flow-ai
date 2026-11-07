@@ -207,3 +207,76 @@ export const ResetBaselineTrigger: React.FC<ResetBaselineDialogProps> = ({
   );
 };
 
+export interface ConfirmResetModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onConfirm: () => void;
+  portal?: 'pilgrim' | 'command';
+}
+
+export const ConfirmResetModal: React.FC<ConfirmResetModalProps> = ({
+  isOpen,
+  onClose,
+  onConfirm,
+  portal = 'command',
+}) => {
+  const { language } = useTranslation();
+  const revision = useMobilityStore((s) => s.state.metadata.stateRevision);
+
+  return (
+    <Dialog
+      isOpen={isOpen}
+      onClose={onClose}
+      portal={portal}
+      title={
+        language === 'te'
+          ? 'డెమో డేటాను ప్రాథమిక స్థితికి రీసెట్ చేయాలా?'
+          : language === 'hi'
+          ? 'क्या डेमो डेटा को बेसलाइन स्थिति में रीसेट करें?'
+          : 'Reset Demo Data to Canonical Baseline?'
+      }
+      description={
+        language === 'te'
+          ? 'ఈ చర్య కమాండ్ సెంటర్ మరియు భక్తుల పోర్టల్‌లో చేసిన అన్ని మార్పులను ప్రారంభ స్థితికి మారుస్తుంది.'
+          : language === 'hi'
+          ? 'यह क्रिया कमांड सेंटर और तीर्थयात्री पोर्टल में किए गए सभी परिवर्तनों को प्रारंभिक बेसलाइन पर रीसेट कर देगी।'
+          : 'This will restore all ghat crowd levels, road closures, parking capacities, shuttle schedules, incidents, and AI recommendations across all open browser tabs to the initial Rajamahendravaram–Kovvur baseline.'
+      }
+      footer={
+        <>
+          <Button portal={portal} variant="ghost" onClick={onClose}>
+            {language === 'te' ? 'రద్దు చేయండి' : language === 'hi' ? 'रद्द करें' : 'Cancel'}
+          </Button>
+          <Button
+            portal={portal}
+            variant="danger"
+            onClick={onConfirm}
+            data-testid="confirm-reset-baseline-btn"
+            leftIcon={<RotateCcw className="w-4 h-4" />}
+          >
+            {language === 'te'
+              ? 'అవును, బేస్‌లైన్‌కు రీసెట్ చేయండి'
+              : language === 'hi'
+              ? 'हाँ, बेसलाइन पर रीसेट करें'
+              : 'Confirm Baseline Reset'}
+          </Button>
+        </>
+      }
+    >
+      <div
+        className={`flex items-start gap-3 p-3.5 rounded-xl border text-xs ${
+          portal === 'command'
+            ? 'bg-amber-950/40 border-amber-500/30 text-amber-200'
+            : 'bg-amber-50 border-amber-200 text-amber-900'
+        }`}
+      >
+        <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
+        <div>
+          <p className="font-semibold">Current State Revision: #{revision}</p>
+        </div>
+      </div>
+    </Dialog>
+  );
+};
+
+

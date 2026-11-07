@@ -9,6 +9,7 @@ import {
   StatusIndicator,
 } from '@/components/design-system';
 import { PilgrimLayout } from '@/components/pilgrim/layout/PilgrimLayout';
+import { CommandLayout } from '@/components/command/layout/CommandLayout';
 import {
   AITravelAssistantPage,
   ExploreDestinationsPage,
@@ -18,6 +19,14 @@ import {
   SafetyAndAccessibilityPage,
   ShuttleTrackerPage,
 } from '@/pages/pilgrim';
+import {
+  AIDecisionCentrePage,
+  CommandOverviewPage,
+  DigitalTwinSimulatorPage,
+  IncidentManagementPage,
+  OperationalMapPage,
+  PoliceTeamManagementPage,
+} from '@/pages/command';
 import { useMobilityStore } from '@/store/useMobilityStore';
 import { useTranslation } from '@/i18n/useTranslation';
 import { defaultAIService } from '@/adapters/ai/LocalDomainAIEngine';
@@ -362,8 +371,17 @@ export const App: React.FC = () => {
         <Route path="safety" element={<SafetyAndAccessibilityPage />} />
       </Route>
 
-      {/* Command Centre & Cross-Tab Sync Harness (Expanded in Phase 4) */}
-      <Route path="/command/*" element={<CommandSyncHarness />} />
+      {/* Authority Command Centre Routes (Desktop-First Operations & Digital Twin Platform) */}
+      <Route path="/command" element={<CommandLayout />}>
+        <Route index element={<CommandOverviewPage />} />
+        <Route path="map" element={<OperationalMapPage />} />
+        <Route path="ai-decisions" element={<AIDecisionCentrePage />} />
+        <Route path="incidents" element={<IncidentManagementPage />} />
+        <Route path="teams" element={<PoliceTeamManagementPage />} />
+        <Route path="digital-twin" element={<DigitalTwinSimulatorPage />} />
+      </Route>
+
+      {/* Phase 1 Cross-Tab Sync Harness */}
       <Route path="/sync-harness" element={<CommandSyncHarness />} />
 
       {/* Fallback Redirect */}

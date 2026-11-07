@@ -579,3 +579,4 @@ export const SafetyAndAccessibilityPage: React.FC = () => {
     </div>
   );
 };
+

@@ -485,3 +485,4 @@ export const AITravelAssistantPage: React.FC = () => {
     </div>
   );
 };
+
