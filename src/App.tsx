@@ -12,6 +12,7 @@ import { useTranslation } from '@/i18n/useTranslation';
 import { defaultAIService } from '@/adapters/ai/LocalDomainAIEngine';
 import { ConciergeMessageResponse } from '@/adapters/interfaces/IAIServiceAdapter';
 import { useAccessibilityStore } from '@/store/useAccessibilityStore';
+import { MobilityMapWorkspace } from '@/components/maps';
 
 export const App: React.FC = () => {
   const state = useMobilityStore((s) => s.state);
@@ -324,6 +325,12 @@ export const App: React.FC = () => {
             </div>
           )}
         </Card>
+
+        {/* Phase 2: Unified Interactive Mapping & Offline Riverfront Workspace */}
+        <MobilityMapWorkspace
+          portal={portalPreview}
+          enableOperatorControls={true}
+        />
       </div>
     </div>
   );

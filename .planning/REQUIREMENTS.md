@@ -25,9 +25,9 @@
 
 ### Category B: Interactive Mapping & Offline Riverfront Engine (`MAP`)
 
-- [ ] **MAP-01**: **Dual-Theme Map Engine + Offline Interactive SVG Riverfront Fallback** — Support Leaflet + CartoDB Light/Dark basemaps when online AND a first-class **Interactive SVG Riverfront Map Engine** (selectable at any time and automatic when offline/tiles fail) that renders the Godavari River, bridges, road corridors, ghats, parking hubs, shuttle routes, crowd heatmaps, incidents, and route polylines without internet access.
-- [ ] **MAP-02**: **7 Operational Map Layers** — Support independent toggling and visualization of: (1) Traffic Layer, (2) Parking Layer, (3) Shuttle Layer, (4) Crowd Heatmap, (5) Incident Layer, (6) Emergency Routes, and (7) Road Closure Overlays.
-- [ ] **MAP-03**: **Interactive Map Controls & Location Inspection** — Provide layer controls, search, zoom/pan, marker selection, accessible non-color-only legends, detail inspection drawers/panels, and map/list view toggles.
+- [x] **MAP-01**: **Dual-Theme Map Engine + Offline Interactive SVG Riverfront Fallback** — Support Leaflet + CartoDB Light/Dark basemaps when online AND a first-class **Interactive SVG Riverfront Map Engine** (selectable at any time and automatic when offline/tiles fail) that renders the Godavari River, bridges, road corridors, ghats, parking hubs, shuttle routes, crowd heatmaps, incidents, and route polylines without internet access.
+- [x] **MAP-02**: **7 Operational Map Layers** — Support independent toggling and visualization of: (1) Traffic Layer, (2) Parking Layer, (3) Shuttle Layer, (4) Crowd Heatmap, (5) Incident Layer, (6) Emergency Routes, and (7) Road Closure Overlays.
+- [x] **MAP-03**: **Interactive Map Controls & Location Inspection** — Provide layer controls, search, zoom/pan, marker selection, accessible non-color-only legends, detail inspection drawers/panels, and map/list view toggles.
 
 ---
 
