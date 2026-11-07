@@ -10,16 +10,16 @@
 
 ### Category A: Foundation, Design System & Shared Mobility Architecture (`FOUND`)
 
-- [ ] **FOUND-01**: **Single-Command Execution** — The entire application starts cleanly with `npm run dev` and builds cleanly with `npm run build` without requiring any external database, backend server, or paid API keys.
-- [ ] **FOUND-02**: **Dual-Identity Theme & Design System** — Implement a reusable component library (`Navigation`, `Sidebar`, `Button`, `FormField`, `SearchBox`, `Dropdown`, `Dialog`, `Drawer`, `Tooltip`, `NotificationPanel`, `StatusIndicator`, `MetricVisualization`, `DataTable`, `MapControl`, `EmptyState`, `LoadingSkeleton`, `ErrorState`, `ConfirmationScreen`) with strict theme scoping:
+- [x] **FOUND-01**: **Single-Command Execution** — The entire application starts cleanly with `npm run dev` and builds cleanly with `npm run build` without requiring any external database, backend server, or paid API keys.
+- [x] **FOUND-02**: **Dual-Identity Theme & Design System** — Implement a reusable component library (`Navigation`, `Sidebar`, `Button`, `FormField`, `SearchBox`, `Dropdown`, `Dialog`, `Drawer`, `Tooltip`, `NotificationPanel`, `StatusIndicator`, `MetricVisualization`, `DataTable`, `MapControl`, `EmptyState`, `LoadingSkeleton`, `ErrorState`, `ConfirmationScreen`) with strict theme scoping:
   - *Pilgrim Portal:* Warm ivory/white surfaces, deep royal blue primary actions, river cyan/teal & subtle saffron accents, dark navy text, soft shadows.
   - *Authority Command Centre:* Deep midnight navy, graphite & dark slate panels, controlled cyan accents, semantic red/amber/green status indicators, dark mode primary.
-- [ ] **FOUND-03**: **Canonical Rajamahendravaram–Kovvur Dataset** — Single shared spatial and operational dataset covering 8 Ghats/Destinations (Pushkar, Kotilingala, Gautami, Saraswati, Padmavathi, Kovvur Gospada, Dowleswaram, ISKCON), 8 Parking Hubs, 6 Shuttle Corridors, 10 Road/Bridge Segments, baseline Incidents, Police Response Teams, AI Recommendations, and Digital Twin Scenarios.
-- [ ] **FOUND-04**: **Service & Repository Adapter Architecture** — All UI components interact with state exclusively via typed `IMobilityRepository`, `IJourneyPlannerService`, `IAIServiceAdapter`, and `IDigitalTwinEngine` interfaces so REST/WebSocket backends can be attached later without rewriting UI layers.
-- [ ] **FOUND-05**: **Persistent Storage & Resilience** — Persist canonical state mutations in versioned `localStorage` with automatic schema validation and graceful fallback to in-memory storage if browser storage is unavailable or full.
-- [ ] **FOUND-06**: **Cross-Tab Synchronization Engine** — Synchronize all state changes across open browser tabs and windows using `BroadcastChannel`, monotonic `stateRevision` + timestamp conflict handling, and `window.onstorage` fallback (without assuming or guaranteeing fixed synchronization latency).
-- [ ] **FOUND-07**: **Reset Demo Data to Baseline** — Provide an accessible **Reset Demo Data to Baseline** control with a confirmation dialog in both portals that restores the canonical dataset and broadcasts the reset to all open tabs.
-- [ ] **FOUND-08**: **Data Honesty & Provenance Labeling** — Explicitly badge all simulated telemetry, operator overrides, Digital Twin projections, local AI outputs, and unavailable live integrations (`Simulated Baseline`, `Authority Override`, `Digital Twin Projection`, `Demo Role Access`). Never represent simulated data as live hardware telemetry.
+- [x] **FOUND-03**: **Canonical Rajamahendravaram–Kovvur Dataset** — Single shared spatial and operational dataset covering 8 Ghats/Destinations (Pushkar, Kotilingala, Gautami, Saraswati, Padmavathi, Kovvur Gospada, Dowleswaram, ISKCON), 8 Parking Hubs, 6 Shuttle Corridors, 10 Road/Bridge Segments, baseline Incidents, Police Response Teams, AI Recommendations, and Digital Twin Scenarios.
+- [x] **FOUND-04**: **Service & Repository Adapter Architecture** — All UI components interact with state exclusively via typed `IMobilityRepository`, `IJourneyPlannerService`, `IAIServiceAdapter`, and `IDigitalTwinEngine` interfaces so REST/WebSocket backends can be attached later without rewriting UI layers.
+- [x] **FOUND-05**: **Persistent Storage & Resilience** — Persist canonical state mutations in versioned `localStorage` with automatic schema validation and graceful fallback to in-memory storage if browser storage is unavailable or full.
+- [x] **FOUND-06**: **Cross-Tab Synchronization Engine** — Synchronize all state changes across open browser tabs and windows using `BroadcastChannel`, monotonic `stateRevision` + timestamp conflict handling, and `window.onstorage` fallback (without assuming or guaranteeing fixed synchronization latency).
+- [x] **FOUND-07**: **Reset Demo Data to Baseline** — Provide an accessible **Reset Demo Data to Baseline** control with a confirmation dialog in both portals that restores the canonical dataset and broadcasts the reset to all open tabs.
+- [x] **FOUND-08**: **Data Honesty & Provenance Labeling** — Explicitly badge all simulated telemetry, operator overrides, Digital Twin projections, local AI outputs, and unavailable live integrations (`Simulated Baseline`, `Authority Override`, `Digital Twin Projection`, `Demo Role Access`). Never represent simulated data as live hardware telemetry.
 
 ---
 
@@ -33,8 +33,8 @@
 
 ### Category C: Multilingual (EN / TE / HI) & Accessibility (`A11Y`)
 
-- [ ] **A11Y-01**: **Full Trilingual Support (English, Telugu, Hindi)** — Prominent language selector switching all UI navigation, labels, status indicators, ghat descriptions, Journey Planner outputs, and AI Concierge interactions between **English**, **Telugu (`తెలుగు`)**, and **Hindi (`हिन्दी`)** using `Noto Sans Telugu` and `Noto Sans Devanagari` without layout overflow.
-- [ ] **A11Y-02**: **Senior Citizen Mode & Accessibility Controls** — One-click Senior Citizen Mode (enlarged typography, high contrast, simplified prominence, accessibility-first route defaults), keyboard navigation, ARIA screen-reader labels, `>=44px` touch targets, non-color-only status indicators (text + icon + status badge), and `prefers-reduced-motion` compliance.
+- [x] **A11Y-01**: **Full Trilingual Support (English, Telugu, Hindi)** — Prominent language selector switching all UI navigation, labels, status indicators, ghat descriptions, Journey Planner outputs, and AI Concierge interactions between **English**, **Telugu (`తెలుగు`)**, and **Hindi (`हिन्दी`)** using `Noto Sans Telugu` and `Noto Sans Devanagari` without layout overflow.
+- [x] **A11Y-02**: **Senior Citizen Mode & Accessibility Controls** — One-click Senior Citizen Mode (enlarged typography, high contrast, simplified prominence, accessibility-first route defaults), keyboard navigation, ARIA screen-reader labels, `>=44px` touch targets, non-color-only status indicators (text + icon + status badge), and `prefers-reduced-motion` compliance.
 - [ ] **A11Y-03**: **Responsive Breakpoint Optimization** — Verified layouts across `360px`, `390px`, `768px`, `1024px`, `1440px`, and `1920px` widths with zero horizontal overflow on mobile.
 
 ---
@@ -72,7 +72,7 @@
 
 ### Category F: Quality Assurance & Security Guardrails (`QA`)
 
-- [ ] **QA-01**: **Zero Client Secret Exposure** — Private API keys (such as Gemini API keys) must never be embedded in frontend code or `VITE_*` variables. Any optional external LLM integration must target a server-side proxy endpoint contract (`/api/ai/*`) while the Local Domain AI Engine operates 100% independently.
+- [x] **QA-01**: **Zero Client Secret Exposure** — Private API keys (such as Gemini API keys) must never be embedded in frontend code or `VITE_*` variables. Any optional external LLM integration must target a server-side proxy endpoint contract (`/api/ai/*`) while the Local Domain AI Engine operates 100% independently.
 - [ ] **QA-02**: **12-Point Master UX Verification & Automated Test Suite** — Pass all 12 UX Quality Assurance checks from `UI-UX-SPEC.md` Section 7 plus automated Vitest unit/integration tests for routing, simulation math, and cross-tab sync.
 
 ---
@@ -98,3 +98,4 @@
 | `PIL-01` to `PIL-08` | **Phase 3:** Pilgrim Portal — Mobile-First Travel & Mobility Experience | Pending |
 | `CMD-01` to `CMD-08` | **Phase 4:** Authority Command Centre & Digital Twin Simulator | Pending |
 | `A11Y-03`, `QA-02` | **Phase 5:** Cross-Portal Integration, Responsive Polish & 12-Point UX Audit | Pending |
+

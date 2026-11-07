@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-scale: 1;
+    --line-height-base: 1.55;
+  }
+
+  /* Indic script typography adjustments so Telugu & Hindi never clip */
+  [data-lang="te"],
+  [data-lang="hi"] {
+    --line-height-base: 1.7;
+  }
+
+  /* Senior Citizen Mode scaling */
+  [data-senior-mode="true"] {
+    --font-scale: 1.15;
+    font-size: 112.5%;
+  }
+
+  /* High Contrast Mode adjustments */
+  [data-high-contrast="true"][data-portal="pilgrim"] {
+    --portal-bg: #FFFFFF;
+    --portal-surface: #FFFFFF;
+    --portal-border: #0F172A;
+    --portal-text: #000000;
+    --portal-primary: #002060;
+  }
+
+  [data-high-contrast="true"][data-portal="command"] {
+    --portal-bg: #000000;
+    --portal-surface: #0A0F1D;
+    --portal-border: #94A3B8;
+    --portal-text: #FFFFFF;
+    --portal-primary: #22D3EE;
+  }
+
+  /* Portal 1: Pilgrim Portal — Warm Ivory, Royal Blue, River Teal, Subtle Saffron */
+  [data-portal="pilgrim"] {
+    --portal-bg: #FAF8F5;
+    --portal-surface: #FFFFFF;
+    --portal-subtle: #F3EFEA;
+    --portal-border: #E5DFD5;
+    --portal-text: #0F172A;
+    --portal-muted: #475569;
+    --portal-primary: #1E3A8A;
+    --portal-primary-hover: #172554;
+    --portal-accent: #0D9488;
+    --portal-highlight: #D97706;
+    background-color: var(--portal-bg);
+    color: var(--portal-text);
+    line-height: var(--line-height-base);
+  }
+
+  /* Portal 2: Authority Command Centre — Midnight Navy, Graphite, Dark Slate, Controlled Cyan */
+  [data-portal="command"] {
+    --portal-bg: #070D19;
+    --portal-surface: #0F172A;
+    --portal-subtle: #1E293B;
+    --portal-border: #334155;
+    --portal-text: #F8FAFC;
+    --portal-muted: #94A3B8;
+    --portal-primary: #06B6D4;
+    --portal-primary-hover: #0891B2;
+    --portal-accent: #06B6D4;
+    --portal-highlight: #F59E0B;
+    background-color: var(--portal-bg);
+    color: var(--portal-text);
+    line-height: var(--line-height-base);
+    color-scheme: dark;
+  }
+
+  body {
+    overflow-x: hidden;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+[data-reduced-motion="true"] *,
+[data-reduced-motion="true"] ::before,
+[data-reduced-motion="true"] ::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Custom subtle scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-portal="pilgrim"] ::-webkit-scrollbar-track {
+  background: #F3EFEA;
+}
+
+[data-portal="pilgrim"] ::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+[data-portal="command"] ::-webkit-scrollbar-track {
+  background: #070D19;
+}
+
+[data-portal="command"] ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
