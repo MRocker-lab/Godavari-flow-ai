@@ -9,7 +9,7 @@ echo.
 cd /d "%~dp0"
 git branch -M main
 git remote set-url origin https://github.com/MRocker-lab/Godavari-flow-ai.git 2>nul || git remote add origin https://github.com/MRocker-lab/Godavari-flow-ai.git
-git push -u origin main
+git push -u origin main --force
 
 echo.
 if %ERRORLEVEL% EQU 0 (
