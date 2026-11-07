@@ -39,3 +39,4 @@ npm run dev
 - **Automated Test Suite (Vitest):** `npm test`
 - **ESLint Code Check:** `npm run lint`
 - **Production Build:** `npm run build`
+
